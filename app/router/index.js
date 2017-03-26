@@ -206,5 +206,12 @@ router.get('/testmail', prescriptions.testfuction);
 router.get('/example',example.ex);
 router.post('/create-company/example',example.post_company);
 
+router.put('/update-company/example/:slug',example.update);
+
+router.get('/update-db-company', function(req, res){
+	example.update_db(req, res);
+})
+
+router.get('/get-company/:slug', example.list_one );
 
 module.exports = router;

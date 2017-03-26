@@ -3,12 +3,19 @@ var app         = express();
 var bodyParser  = require('body-parser');
 
 var mongoose    = require('mongoose');
+var morgan = require('morgan');
 
 var cors    = require('cors');
 
 var compression = require('compression');
 
 var CONFIG    = require('./config');
+
+mongoose.Promise = Promise;
+
+mongoose.Promise = global.Promise;
+mongoose.Promise = require('bluebird');
+//mongoose.connect('mongodb://10.7.0.3:27107/data/db');
 
 // Override CONFIG variable for enabling or disabling testing 
 
@@ -27,8 +34,10 @@ app.use(compression());
 app.use(bodyParser.urlencoded({ extended:false}));
 app.use(bodyParser.json({limit: '50mb'}));
 
+//app.use(bodyParser.json());
+
 // use morgan to log requests to the console
-//app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 // use cors to enable Cross Origin Resource Sharing - enable access from any domain/ip
 app.use(cors());
