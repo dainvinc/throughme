@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.rowcol{
+    color: maroon;
+    
+} 
+</style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- Required CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+	
+	<style type="text/css">
+		tbody tr a {
+			line-height: 4em;
+		}
+	</style>
+
+</head>
+<body>
+	<h2>Companies</h2>
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	   <div class="panel panel-default">
+	     <div class="panel-heading" role="tab" id="headingOne">
+	       <h4 class="panel-title">
+	         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTable" aria-expanded="true" aria-controls="collapseOne">
+	           Table
+	         </a>
+	       </h4>
+	     </div>
+	     <div id="collapseTable" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+	       <div class="panel-body">
+				<table  id="articles-table" class="display" cellspacing="0" width="100%">
+			       <thead>
+			       	<tr style="color:red;">
+			       		<th>Name</th>
+			          	<th>Category</th>
+			            <th>Logo</th>
+			       		<th>Slug</th>
+			           	
+			       		<th>Description</th>
+			       		<th>Website URL</th>                		
+			       	</tr>
+			       </thead>
+			       <tfoot>
+			       	<tr style="color:red;">
+			       	   <th>Name</th>
+			          	<th>Category</th>
+			            <th>Logo</th>
+			       		<th>Slug</th>
+			           	
+			       		<th>Description</th>
+			       		<th>Website URL</th>
+			       	</tr>
+			       </tfoot>
+			   </table>         
+	       </div>
+	     </div>
+	   </div>
+	   <div class="panel panel-default">
+	     <div class="panel-heading" role="tab" id="headingTwo">
+	       <h4 class="panel-title">
+	         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCreate" aria-expanded="false" aria-controls="collapseTwo">
+	           Create item
+	         </a>
+	       </h4>
+	     </div>
+	     <div id="collapseCreate" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+	       <div class="panel-body">
+	         <form class="form-horizontal" role="form">
+			     <div class="form-group">
+			       <label class="control-label col-sm-2">Name:</label>
+			       <div class="col-sm-10">
+			         <input data-validation="required" type="text" class="form-control" id="name" placeholder="Company name">
+			       </div>
+			     </div>
+
+			     <div class="form-group">
+			       <label class="control-label col-sm-2" >Logo URL:</label>
+			       <div class="col-sm-10">
+			         <input data-validation="required" type="text" class="form-control" id="logo_url" placeholder="Enter Company Logo URL">
+			       </div>
+			     </div>
+
+			       <div class="form-group">
+		       <label class="control-label col-sm-2" > Breif Info:</label>
+		       <div class="col-sm-10">
+		         <input data-validation="required" type="text" class="form-control" id="breif_info" placeholder="Breif Info of Company">
+		       </div>
+		     </div>
+					
+				 <div class="form-group">
+			       <label class="control-label col-sm-2" >Awards:</label>
+			       <div class="col-sm-10">
+			         <input data-validation="required" type="text" class="form-control" id="awards" placeholder="Company awards">
+			       </div>
+			     </div>
+
+			   
+
+		     <div class="form-group">
+		       <label class="control-label col-sm-2" > Details: </label>
+		       <div class="col-sm-10"> 
+		         <textarea data-validation="required" id="details" class="form-control" placeholder="Compnay details"></textarea>
+		       </div>
+		       </div>
+
+		        <div class="form-group">
+		       <label class="control-label col-sm-2" >Clients:</label>
+		       <div class="col-sm-10"> 
+		        <textarea data-validation="required" id="clients" class="form-control" placeholder="Company Clients"></textarea>
+		       </div>
+		       </div>
+
+		       <div class="form-group">
+		       <label class="control-label col-sm-2" >Description</label>
+		       <div class="col-sm-10"> 
+		         <textarea data-validation="required" id="description" class="form-control" placeholder="Company description"></textarea>
+		       </div>
+		     </div>
+
+		      <div class="form-group">
+		       <label class="control-label col-sm-2" >Website URL</label>
+		       <div class="col-sm-10"> 
+		         <textarea data-validation="required" id="website_url" class="form-control" placeholder="Company website"></textarea>
+		       </div>
+		     </div>
+
+		     	<div class="form-group">
+		       <label class="control-label col-sm-2" >CEO/Manager details:</label>
+		       <div class="col-sm-10">
+		         <input data-validation="required" type="text" class="form-control" id="ceo" placeholder="CEO/Manager details">
+		       </div>
+		     </div>
+
+		     	<div class="form-group">
+		       <label class="control-label col-sm-2" >Contact :</label>
+		       <div class="col-sm-10">
+		         <input data-validation="required" type="text" class="form-control" id="contact" placeholder="Company Contact">
+		       </div>
+		     </div>
+
+		     <div class="form-group">
+		       <label class="control-label col-sm-2" >Email:</label>
+		       <div class="col-sm-10">
+		         <input data-validation="required" type="text" class="form-control" id="email" placeholder="Company Contact Email ID">
+		       </div>
+		     </div>
+
+			     <div class="form-group">
+			       <label class="control-label col-sm-2" >Slug:</label>
+			       <div class="col-sm-10">
+			         <input data-validation="required" type="text" class="form-control" id="slug" placeholder="Enter article headline">
+			       </div>
+			     </div>
+					
+				 <div class="form-group">              	
+			       <label class="control-label col-sm-2" >Category:</label>
+			       <div class="col-sm-10">
+			         <select data-validation="required" class="form-control" id="category">
+			           <option value="">Choose one</option>
+			           <option value="agencies">Agencies</option>
+			           <option value="media">Media</option>
+			           <option value="brand">Brand</option>
+			           <option value="designs">Designs</option>
+			           
+			           <option value="events">Events</option>
+			            
+			         </select>
+			       </div>
+			     </div>
+
+			     
+			     <div class="form-group">
+			       <label class="control-label col-sm-2" >SEO Description</label>
+			       <div class="col-sm-10"> 
+			         <textarea data-validation="required" id="seo_description" class="form-control" placeholder="Enter Description"></textarea>
+			       </div>
+			     </div>
+
+				 <div class="form-group">
+			       <label class="control-label col-sm-2">SEO Keywords</label>
+			       <div class="col-sm-10"> 
+			         <textarea data-validation="required" id="seo_keywords" class="form-control" placeholder="Enter Description"></textarea>
+			       </div>
+			     </div>
+
+			    
+
+		   <div class="form-group">
+		       <label class="control-label col-sm-2" >Updated time</label>
+		       <div class="col-sm-10"> 
+		         <textarea data-validation="required" id="updated_at" class="form-control" placeholder="Enter Last Updated time"></textarea>
+		       </div>
+		     </div>
+
+			     <div class="form-group"> 
+			       <div class="col-sm-offset-2 col-sm-10">
+			         <button type="submit" class="btn btn-md btn-primary" id="btnCreateArticle">Create</button>
+			       </div>
+			     </div>
+			   </form>
+	       </div>
+	     </div>
+	   </div>
+	   <div class="panel panel-default">
+	     <div class="panel-heading" role="tab" id="headingThree">
+	       <h4 class="panel-title">
+	         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEdit" aria-expanded="false" aria-controls="collapseThree">
+	           Edit item
+	         </a>
+	       </h4>
+	     </div>
+	     <div id="collapseEdit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+	       <div class="panel-body">
+	         <form class="col-sm-12">
+		   	Enter article slug: 
+		   	<input  data-validation="required" type="text" id="company_search_slug">
+		   	<button class="btn-md btn-primary" type="submit" id="btnCompanySearch">Search</button>
+		   </form>
+
+
+		   <br><br>
+		   <form class="form-horizontal" role="form">
+		     <div class="form-group">
+			       <label class="control-label col-sm-2">Name:</label>
+			       <div class="col-sm-10">
+			         <input data-validation="required" type="text" class="form-control" id="edit_name" placeholder="Company name">
+			       </div>
+			     </div>
+
+			     <div class="form-group">
+			       <label class="control-label col-sm-2" >Logo URL:</label>
+			       <div class="col-sm-10">
+			         <input data-validation="required" type="text" class="form-control" id="edit_logo_url" placeholder="Enter Company Logo URL">
+			       </div>
+			     </div>
+
+			       <div class="form-group">
+		       <label class="control-label col-sm-2" > Breif Info:</label>
+		       <div class="col-sm-10">
+		         <input data-validation="required" type="text" class="form-control" id="edit_breif_info" placeholder="Breif Info of Company">
+		       </div>
+		     </div>
+					
+				 <div class="form-group">
+			       <label class="control-label col-sm-2" >Awards:</label>
+			       <div class="col-sm-10">
+			         <input data-validation="required" type="text" class="form-control" id="edit_awards" placeholder="Company awards">
+			       </div>
+			     </div>
+
+			   
+
+		     <div class="form-group">
+		       <label class="control-label col-sm-2" > Details: </label>
+		       <div class="col-sm-10"> 
+		         <textarea data-validation="required" id="edit_details" class="form-control" placeholder="Compnay details"></textarea>
+		       </div>
+		       </div>
+
+		        <div class="form-group">
+		       <label class="control-label col-sm-2" >Clients:</label>
+		       <div class="col-sm-10"> 
+		        <textarea data-validation="required" id="edit_clients" class="form-control" placeholder="Company Clients"></textarea>
+		       </div>
+		       </div>
+
+		       <div class="form-group">
+		       <label class="control-label col-sm-2" >Description</label>
+		       <div class="col-sm-10"> 
+		         <textarea data-validation="required" id="edit_description" class="form-control" placeholder="Company description"></textarea>
+		       </div>
+		     </div>
+
+		      <div class="form-group">
+		       <label class="control-label col-sm-2" >Website URL</label>
+		       <div class="col-sm-10"> 
+		         <textarea data-validation="required" id="edit_website_url" class="form-control" placeholder="Company website"></textarea>
+		       </div>
+		     </div>
+
+		     	<div class="form-group">
+		       <label class="control-label col-sm-2" >CEO/Manager details:</label>
+		       <div class="col-sm-10">
+		         <input data-validation="required" type="text" class="form-control" id="edit_ceo" placeholder="CEO/Manager details">
+		       </div>
+		     </div>
+
+		     	<div class="form-group">
+		       <label class="control-label col-sm-2" >Contact Number:</label>
+		       <div class="col-sm-10">
+		         <input data-validation="required" type="text" class="form-control" id="edit_contact" placeholder="Company Contact">
+		       </div>
+		     </div>
+
+		     <div class="form-group">
+		       <label class="control-label col-sm-2" >Email:</label>
+		       <div class="col-sm-10">
+		         <input data-validation="required" type="text" class="form-control" id="edit_email" placeholder="Company Contact Email ID">
+		       </div>
+		     </div>
+
+			     <div class="form-group">
+			       <label class="control-label col-sm-2" >Slug:</label>
+			       <div class="col-sm-10">
+			         <input data-validation="required" type="text" class="form-control" id="edit_slug" placeholder="Enter article headline">
+			       </div>
+			     </div>
+					
+				 <div class="form-group">              	
+			       <label class="control-label col-sm-2" >Category:</label>
+			       <div class="col-sm-10">
+			         <select data-validation="required" class="form-control" id="edit_category">
+			           <option value="">Choose one</option>
+			           <option value="agencies">Agencies</option>
+			           <option value="media">Media</option>
+			           <option value="brand">Brand</option>
+			           <option value="designs">Designs</option>
+			           
+			           <option value="events">Events</option>
+			            
+			         </select>
+			       </div>
+			     </div>
+
+			     
+			     <div class="form-group">
+			       <label class="control-label col-sm-2" >SEO Description</label>
+			       <div class="col-sm-10"> 
+			         <textarea data-validation="required" id="edit_seo_description" class="form-control" placeholder="Enter Description"></textarea>
+			       </div>
+			     </div>
+
+				 <div class="form-group">
+			       <label class="control-label col-sm-2">SEO Keywords</label>
+			       <div class="col-sm-10"> 
+			         <textarea data-validation="required" id="edit_seo_keywords" class="form-control" placeholder="Enter Description"></textarea>
+			       </div>
+			     </div>
+
+			    
+
+		   <div class="form-group">
+		       <label class="control-label col-sm-2" >Updated time</label>
+		       <div class="col-sm-10"> 
+		         <textarea data-validation="required" id="edit_updated_at" class="form-control" placeholder="Enter Last Updated time"></textarea>
+		       </div>
+		     </div>
+		     <div class="form-group"> 
+		       <div class="col-sm-offset-2 col-sm-10">
+		         <button type="submit" class="btn-sm btn-primary btn" id="btnUpdateArticle">Update</button>
+		       </div>
+		     </div>
+
+		     <div style="display:none">
+		     	<input type="text" id="article_edit_id">
+		     	<input type="text" id="article_edit_slug">
+		     	<input type="text" id="article_edit_created_at">
+		     </div>
+		   </form>
+	       </div>
+	     </div>
+	   </div>
+	   <!--delete item -->
+	   <div class="panel panel-default">
+	     <div class="panel-heading" role="tab" id="headingThree">
+	       <h4 class="panel-title">
+	         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseDelete" aria-expanded="false" aria-controls="collapseThree">
+	           Delete item
+	         </a>
+	       </h4>
+	     </div>
+	     <div id="collapseDelete" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+	       <div class="panel-body">
+	      		<form class="col-sm-12">
+			   	Enter article slug: 
+			   	<input data-validation="required" type="text" id="article_delete_slug">
+			   	</form> <button class="btn-md btn-danger" type="submit" id="btnDeleteArticle">Delete</button>
+			   
+	       </div>
+	     </div>
+	   </div>
+	 </div>    
+	</div>
+	
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+
+	<!-- Tabs -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<!-- Required JS -->
+	<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+	
+
+
+	<!-- Form validator -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.43/jquery.form-validator.min.js"></script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			// Enable form validation
+			
+
+			// Get article table data
+			$.getJSON('http://localhost:3000/example')
+			.done(function(response){
+				if (response.success){
+					// Creating new array from results and including edit link
+					rows = [];
+					
+					for (var i = 0; i < response.data.length-1; i++) {
+						rows[i] = response.data[i];
+						 
+                       	rows[i].edit_link = "<a  href='/admin/articles/edit/" + response.data[i].slug + "' target='_blank' class='label label-warning'>" + response.data[i].vidio_state + "</a>"; 
+					};
+
+					$('#articles-table').DataTable({
+
+						data: rows,
+						columns: [
+							{ data: 'edit_link'},
+							{ data: 'name'},
+							{ data: 'category'},
+							{ data: 'logo_url' },
+             				{ data: 'slug' },
+             				{ data: 'description' },
+    						{ data: 'website_url' },
+              				   					
+						]
+					});		
+		
+				}
+			})
+
+			// Create an article
+			$('#btnCreateArticle').click(function(e){
+				e.preventDefault();
+				d = new Date();
+				now = d.toISOString();
+                name = $("#name").val();
+				logo_url = $("#logo_url").val();
+				breif = $("#breif_info").val();
+				awards = $("#awards").val();
+				details=$("#details").val();
+				clients=$("#clients").val();
+				description=$("#description").val();
+				website_url=$("#website_url").val();
+				ceo=$("#ceo").val();
+				contact = $("#contact").val();
+				email=$("#email").val();
+				slug = ($("#slug").val()).trim();
+				category = $("#category").val();
+				
+				seo_description = $("#seo_description").val();
+				seo_keywords = $("#seo_keywords").val();
+				
+				$.ajax({
+					url: 'http://localhost:3000/create-company/example',
+					type: 'POST',				
+					data: {
+						name: name,
+						logo_url: logo_url,
+						breif_info: breif,
+						awards: awards,
+						details: details,
+						clients: clients,
+						slug: slug,
+						category: category,
+						description: description,
+						seo_description: seo_description,
+						seo_keywords: seo_keywords,
+						created_at: now,
+						updated_at: now,
+						ceo : ceo,
+						email : email,
+						contact : contact,
+						
+						
+					},
+					success: function(response){
+						alert(response.message);
+					}
+				})
+			});
+
+			// Edit an article
+			$('#btnCompanySearch').click(function(e){
+				e.preventDefault();
+				url = 'http://localhost:3000/example/one-company/' + $('#company_search_slug').val() + ''
+
+				$.getJSON(url)
+				.done(function(response){
+					if (response.success){
+						$("#edit_name").val(response.data.name);
+						$("#edit_logo_url").val(response.data.logo_url);												
+						$("#edit_breif_info").val(response.data.breif_info);												
+						$("#edit_category").val(response.data.category);
+						$("#edit_awards").val(response.data.awards);
+						$("#edit_details").val(response.data.details);
+						$("#edit_clients").val(response.data.clients);
+						$("#edit_description").val(response.data.description);
+						$("#edit_website_url").val(response.data.website_urls);
+						$("#edit_ceo").val(response.data.ceo);
+						$("#edit_seo_description").val(response.data.seo_description);
+						$("#edit_seo_keywords").val(response.data.seo_keywords);
+						$("#edit_email").val(response.data.email);//M.Harika
+						
+						// Setting hidden input elements as well
+						$("#edit_id").val(response.data._id);	
+						$("#edit_slug").val(response.data.slug);					
+						$("#edit_created_at").val(response.data.created_at);						
+					} else {
+						alert(response.message)
+					}
+				})
+			})
+
+			// Update an article
+			$('#btnUpdateArticle').click(function(e){
+				e.preventDefault();
+				d = new Date();
+				now = d.toISOString();
+
+				id = $("#article_edit_id").val();
+				title = $("#article_edit_title").val();
+				headline = $("#article_edit_headline").val();
+				sub_headline = $("#article_edit_sub_headline").val();
+				slug = $("#article_edit_slug").val();
+				category = $("#article_edit_category").val();
+				event = $("#article_edit_event").val();
+				description = $("#article_edit_description").val();
+				img_url = $("#article_edit_img_url").val();
+				img_alt = $("#article_edit_img_alt").val();
+				thumb_url = $("#article_edit_thumb_url").val();
+				video_url = $("#article_edit_video_url").val();
+				seo_description = $("#article_edit_seo_description").val();
+				seo_keywords = $("#article_edit_seo_keywords").val();
+				transcript = $("#article_edit_transcript").val();//M.Harika
+				is_top_story = ($("#article_edit_is_top_story").val() === 'on') ? true : false;
+				is_home_vidio = ($("#article_edit_is_home_vidio").val() === 'on') ? true : false;
+				is_popular_story = ($("#article_edit_is_popular_story").val() === 'on') ? true : false;
+				created_at = $("#article_edit_created_at").val();
+
+				url = 'https://therightdoctors.com/api/beta/article/'+ slug +'?key=7xOyNH554tY83cBN7Ktpw3s1y68ql6Eg';
+				$.ajax({
+					url: url,
+					type: 'PUT',				
+					data: {
+						_id: id,
+						title: title,
+						headline: headline,
+						sub_headline: sub_headline,
+						slug: slug,
+						category: category,
+						event: event,
+						description: description,
+						image_url: img_url,
+						image_alt: img_alt,
+						thumbnail_url: thumb_url,
+						video_url: video_url,
+						hits: 0,
+						is_top_story: is_top_story,
+						is_home_vidio: is_home_vidio,
+						is_popular_story: is_popular_story,
+						favorites: 0,
+						seo_description: seo_description,
+						seo_keywords: seo_keywords,
+						transcript: transcript,//M.Harika
+						created_at: created_at,
+						updated_at: now,
+						patients:{}
+					},
+					success: function(response){
+						alert(response.message);
+					}
+				})
+			});
+			
+			// Delete an article
+			$('#btnDeleteArticle').click(function(e){
+				e.preventDefault();
+				//alert('gng');
+				url = 'https://therightdoctors.com/api/beta/article/'
+					+ $('#article_delete_slug').val()
+					+ '?key=7xOyNH554tY83cBN7Ktpw3s1y68ql6Eg';
+
+				$.ajax({
+					url: url,
+					type: 'DELETE',
+					success: function(response){
+						
+						alert(response.message);
+					}
+				})
+			})
+		});
+	</script>
+</body>
+</html>

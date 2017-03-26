@@ -46,8 +46,24 @@ app.use(cors());
 app.use('/', require('./app/router/index'));
 // opm Routing
 // ---------------------------------------------------------
-//app.use('/api/beta/opm', require('./app/router/index_opm'));
+//app.use('/api/beta/opm', require('./app/router/index_opm'
 
+
+app.options('*',cors());
+//manual cors setup
+app.use('/index.html',function(req, res, next) {
+ res.header("Access-Control-Allow-Origin", "*");
+// res.header("Access-Control-Allow-Methods", "GET");
+ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+ next();
+});
+
+//routing to home page
+app.get('/',cors(), function(req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+   });
+ 
+app.use("/", express.static(__dirname + "/public/"));
 
 
 // =================================================================
