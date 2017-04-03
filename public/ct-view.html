@@ -1,0 +1,78 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+ 
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-selector/iron-selector.html">
+ 
+
+
+
+<!--
+`login-fire`
+login process
+
+@demo demo/index.html
+-->
+
+<dom-module id="ct-view">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+     
+    </style>
+    
+<iron-ajax
+         auto
+         id="jax"
+         url="http://localhost:3000/example/"
+         handle-as="json"
+          method="GET"
+         
+          last-response={{ajaxResponse}}></iron-ajax>
+
+          <h1><span>[[ajaxResponse.message]]</span></h1>
+            <template is="dom-repeat" items="[[ajaxResponse.data]]">
+            
+                
+   <div class="col-md-3">
+                  <a href="#" class="thumbnail">
+                                <img src="http://placehold.it/300x200" alt="">
+                            </a>
+                            <h3 style="margin:0px">{{item.name}}</h3>
+                            <p style="margin:0px">{{item.breif_info}}</p>
+   </div>
+        </template>
+       
+
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'ct-view',
+ 
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'login-fire',
+        },
+         user:{
+              type:Object
+          },
+          statusknown:{
+              type:Object
+          }
+
+      },
+    
+      
+
+
+
+    });
+  </script>
+</dom-module>
